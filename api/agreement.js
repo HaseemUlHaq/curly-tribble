@@ -18,6 +18,10 @@ exports.add=function (req,res,next)
   {
     console.log("Added result: ",Agreement)
     res.send(Agreement);
+
+
+
+    
   }).catch(next);
 };
 
