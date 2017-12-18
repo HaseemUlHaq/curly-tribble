@@ -3,12 +3,12 @@ const schema= mongoose.Schema;
 
 //Plaza table
 const notificationschema=new schema(
-  {
-  NotificationType:{type:String,required:[true,"Type is required"]},
-  NotificationDate:{type:String,required:[true,"Date is required"]},
-  NotificationMsg:{type:String,required:[true,"Message is required"]},
-//  UserID:{type:String},
-//  BillID:{type:String,default:0},
+{
+  NotificationType:{type:String},
+  NotificationDate:{type:String},
+  NotificationMsg:{type:String},
+  UserID:{type:mongoose.Schema.Types.ObjectId,ref:'user'},
+  BillID:{type:mongoose.Schema.Types.ObjectId,ref:'billings'},
   isDeleted:{type:Boolean,default:false}
   }
 );

@@ -33,3 +33,18 @@ exports.isDeleted=function (req,res,next)
     console.log({_id:req.params.id});
   });
 };
+
+
+exports.all= function(req,res)
+{
+  Billing.find({}).populate("ShopID").exec(function(error,result)
+  {
+    if(error)
+    {
+      res.status(500).send({error:error});
+    }
+    else {
+      res.status(200).send({result:result});
+    }
+  })
+}

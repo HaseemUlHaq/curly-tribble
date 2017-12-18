@@ -1,4 +1,3 @@
-//var plaza=require('../models/plaza.js');
 const Shop= require("../models/shop");
 
 exports.getAll=function (req,res,next)
@@ -36,3 +35,16 @@ exports.isDeleted=function (req,res,next)
     console.log({_id:req.params.id});
   });
 };
+
+
+exports.all = function(req,res)
+{
+//  .populate('ShopID').sort({sort:1}).
+  Shop.find({}).populate("PlazaID").exec(function(error,result){
+    if(error){
+      res.status(500).send({error:error});
+    }else{
+      res.status(200).send({result:result});
+    }
+  })
+}

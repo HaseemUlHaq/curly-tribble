@@ -32,3 +32,18 @@ exports.IsDelete=function(req,res,next)
     res.send(posttasks);
   }).catch(next);
 };
+
+exports.all = function(req,res)
+{
+  posttask.find({}).populate("user").exec(function(error,result)
+  {
+    if(error)
+    {
+      res.status(500).send({error:error});
+    }
+    else
+    {
+      res.status(200).send({result:result});
+    }
+  })
+}

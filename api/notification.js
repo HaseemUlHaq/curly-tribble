@@ -35,3 +35,19 @@ exports.isDeleted=function (req,res,next)
     console.log({_id:req.params.id});
   });
 };
+
+
+exports.all= function(req,res)
+{
+  console.log("notificationnnnn");
+  Notification.find({}).populate("UserID").populate("BillID").exec(function(error,result)
+  {
+    if(error)
+    {
+      res.status(500).send({error:error});
+    }
+    else {
+      res.status(200).send({result:result});
+    }
+  })
+}
